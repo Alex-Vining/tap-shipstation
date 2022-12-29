@@ -1,5 +1,6 @@
 import os
 import pathlib
+import typing
 from datetime import datetime, timedelta
 
 import pendulum
@@ -13,9 +14,9 @@ from tap_shipstation.stream import Stream
 REQUIRED_CONFIG_KEYS = ["api_key", "api_secret", "default_start_datetime"]
 LOGGER = singer.get_logger()
 
-Record = dict[str, object]
-Config = dict[str, object]
-State = dict[str, object]
+Record = typing.Dict[str, object]
+Config = typing.Dict[str, object]
+State = typing.Dict[str, object]
 
 
 def get_abs_path(path: str) -> pathlib.Path:
@@ -78,7 +79,7 @@ def discover() -> Catalog:
     return Catalog([stream.catalog_entry for stream in STREAMS])
 
 
-def get_selected_streams(catalog: Catalog) -> list[Stream]:
+def get_selected_streams(catalog: Catalog) -> "list[Stream]":
     """
     Gets selected streams.  Checks schema's 'selected' first (legacy)
     and then checks metadata (current), looking for an empty breadcrumb

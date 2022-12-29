@@ -8,7 +8,9 @@ import singer
 import singer.metadata
 from pendulum.datetime import DateTime
 
-ParametersFn = typing.Callable[[DateTime | None, DateTime | None], list[dict]]
+ParametersFn = typing.Callable[
+    [typing.Optional[DateTime], typing.Optional[DateTime]], typing.List[dict]
+]
 
 no_parameters: ParametersFn = lambda *_: [{}]
 
@@ -16,16 +18,19 @@ no_parameters: ParametersFn = lambda *_: [{}]
 @dataclasses.dataclass
 class Stream:
     endpoint: str
-    key_properties: list[str]
+    key_properties: typing.List[str]
     schema_path: pathlib.Path
     paginate: bool
     replication: bool = False
     parameters_fn: ParametersFn = no_parameters
+    _schema: typing.Optional[singer.Schema] = None
 
-    @functools.cached_property
+    @property
     def schema(self) -> singer.Schema:
-        with self.schema_path.open("r") as file:
-            return singer.Schema.from_dict(jsonref.load(file))
+        if self._schema is None:
+            with self.schema_path.open("r") as file:
+                self._schema = singer.Schema.from_dict(jsonref.load(file))
+        return self._schema
 
     @property
     def name(self) -> str:
