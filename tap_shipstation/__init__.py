@@ -168,7 +168,7 @@ def main():
     # If discover flag was passed, run discovery mode and dump output to stdout
     if args.discover:
         catalog = discover()
-        print(catalog.dump())
+        catalog.dump()
     # Otherwise run in sync mode
     else:
         if args.catalog:
