@@ -1,0 +1,36 @@
+{
+    "type": ["null", "object"],
+    "additionalProperties": false,
+    "definitions": {
+        "StatusMapping": {
+            "type": ["object"],
+            "properties": {
+                "orderStatus": { "type": ["null", "string"] },
+                "statusKey": { "type": ["null", "string"] }
+            }
+        }
+    },
+    "properties": {
+        "storeId": { "type": ["null", "number"] },
+        "storeName": { "type": ["null", "string"] },
+        "marketplaceId": { "type": ["null", "number"] },
+        "marketplaceName": { "type": ["null", "string"] },
+        "accountName": { "type": ["null", "string"] },
+        "email": { "type": ["null", "string"] },
+        "integrationUrl": { "type": ["null", "string"] },
+        "active": { "type": ["boolean"] },
+        "companyName": { "type": ["null", "string"] },
+        "phone": { "type": ["null", "string"] },
+        "publicEmail": { "type": ["null", "string"] },
+        "website": { "type": ["null", "string"] },
+        "refreshDate": { "type": ["null", "string"], "format": "date-time"},
+        "lastRefreshAttempt": { "type": ["null", "string"], "format": "date-time" },
+        "createDate": { "type": ["null", "string"], "format": "date-time" },
+        "modifyDate": { "type": ["null", "string"], "format": "date-time" },
+        "autoRefresh": { "type": ["null", "boolean"] },
+        "statusMappings": { 
+            "type": ["null", "array"],
+            "items": { "$ref": "#/definitions/StatusMapping" }
+        }
+    }
+}

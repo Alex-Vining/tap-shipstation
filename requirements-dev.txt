@@ -1,0 +1,7 @@
+pre-commit
+
+mypy
+black
+isort
+
+types-requests

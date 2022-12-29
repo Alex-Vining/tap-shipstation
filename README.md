@@ -1,4 +1,10 @@
+
 # tap-shipstation
+
+[![License: AGPLv3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
 This is a [Singer](https://singer.io) tap that produces JSON-formatted data
 following the [Singer
@@ -10,6 +16,7 @@ This tap:
 - Extracts the following resources:
   - [Orders](https://www.shipstation.com/developer-api/#/reference/model-order)
   - [Shipments](https://www.shipstation.com/developer-api/#/reference/shipments/list-shipments/list-shipments-w/o-parameters)
+  - [Stores](https://www.shipstation.com/docs/api/stores/list/)
 - Outputs the schema for each resource
 - Incrementally pulls data based on the input state
 
